@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    box-sizing:  border-box;   /*kutu boyutlandırma */
+}
+
+body{
+    font-family: 'Muli' , sans-serif;
+    display: flex;    /*ortala,hizala*/
+    align-items: center;  /*ögeyi ortaya hizalama*/
+    justify-content: center;      /*tam ortada bulunması*/
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;  /*kenar boşluklarından kurtuldum */
+    background-color: #ede3c7;
+}
+
+.container {
+    display: flex;
+    width:90vw;
+
+}
+
+.panel {
+    background-size: auto 100%;
+    background-position: center; /* arka plan pozisyonu */
+    background-repeat: no-repeat; /*arka plan tekrarı */
+    height: 80vh; /* 80 görüntü alanı yüksekliği */
+    border-radius: 50px; /*kenarlık yarıçapı */
+    color: #d9e071;
+    cursor: pointer; /*üzerine gelindiğinde imlecim olsun*/
+    flex: 0.5;
+    margin: 10px; /* kenar */
+    position: relative;
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute ; /*pozisyon mutlak olacaktır */
+    bottom: 1px; /* alt,dip */
+    left: 20px;
+    margin: 30px;  
+    /* başlığın yalnızca etkin olduğu durumda gözükmesini istiyorum */
+    opacity: 0; /* bu başlığın görünmez olmasını sağlar.*/
+}
+ /* aktif olduğunda yazıyı göstereceğiz */
+
+ .panel.active {
+    flex: 5; /*genişlik */
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3 ease-in 0.4;
+}
+
+
+/* bunun anlamı, buraya koyduğum tüm stillerin yalnızca ekran 480pikselin altındaysa etkili olacağıdır. */
+@media(max-width: 480px) {
+    .container {
+        width: 100vw;
+    }
+    .panel:nth-of-type(4), /* son ikisini istiyorum */
+    .panel:nth-of-type(5) {
+        display: none;  /* artık küçük ekranda yalnızca üç resim veya üç kart olduğunu görebilirim */
+    }
+}
